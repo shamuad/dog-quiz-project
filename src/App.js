@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import QuestionContainer from './components/QuestionContainer';
+import AnswerContainer from './components/AnswerContainer';
 
 class App extends Component {
   render() {
@@ -8,6 +10,8 @@ class App extends Component {
         <header className="App-header">
         <h1>Dog Quiz App</h1>
         
+        <QuestionContainer />
+        <AnswerContainer />
         </header>
         <side>
         <div className ="score">
