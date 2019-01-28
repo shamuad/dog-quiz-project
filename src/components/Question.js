@@ -1,21 +1,14 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
-export default class Question extends Component {
+function Question(props) {
 
-  render() {
-    return 
-    // (
-    //   <div className="dogs-list">
-    //     <h1>Dogs List</h1>
-
-    //     { !dogBreeds && 'Loading...' }
-
-    //     {
-    //       dogBreeds &&
-    //       <ul>{ dogBreeds.map(this.renderDogBreed) }</ul>
-    //     }
-    //   </div>
-    // )
-  }
+  return (
+    <h2 className="question">{props.content}</h2>
+  )
 }
+
+// Question.propTypes = {
+//   content: React.PropTypes.string.isRequired
+// };
+
+export default Question
