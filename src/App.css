@@ -57,13 +57,13 @@
   width: 80%;
 }
 
-.answer {
+/* .answer {
  background-color: red;
  height: 50%;
  position: absolute;
  bottom: 0;
  text-align: center;
-}
+} */
 
 .answers {
   display: inline-block;
