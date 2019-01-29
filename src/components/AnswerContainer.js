@@ -9,14 +9,12 @@ class AnswerContainer extends Component {
     this.props.buttonIncrement()
   }
   
-  render() {
-    // console.log(this.incrementCounter());
-
+  render() {   
     return (
       <div className="Answer">
-        <Answer content="Answer 1" test={this.incrementCounter} />
-        <Answer content="Answer 2" />
-        <Answer content="Answer 3" />
+        <Answer content={this.props.dogbreeds[0].breedname} test={this.incrementCounter}/>
+        <Answer content={this.props.dogbreeds[2].breedname} test={this.incrementCounter}/>
+        <Answer content={this.props.dogbreeds[3].breedname} test={this.incrementCounter}/>
       </div>
     )
   }
@@ -24,6 +22,8 @@ class AnswerContainer extends Component {
 
 const mapStateToProps = (state) => {
   return { numClicked: state.numClicked}
+  state
  }
+
 
 export default connect (mapStateToProps, { buttonIncrement }) (AnswerContainer)
