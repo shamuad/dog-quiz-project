@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import QuestionContainer from './components/QuestionContainer';
 import AnswerContainer from './components/AnswerContainer';
+import { connect } from 'react-redux'
+
+
 
 class App extends Component {
+  
+  
   render() {
     return (
       <div className="App">
@@ -13,14 +18,14 @@ class App extends Component {
 
           
         </header>
-        <side>
+        <div className="Side">
           <div className="score">
             <p>Score:</p>
             <p>50%</p>
           </div>
 
 
-        </side>
+        </div>
         <main>
           <div className="quiz">
 
@@ -57,4 +62,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps,{AnswerContainer,QuestionContainer})(App)

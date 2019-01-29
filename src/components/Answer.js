@@ -2,10 +2,12 @@ import React from 'react'
 
 function Answer(props) {
 
-  return (<div>
+  
+  return (
+    (<div>
     <p className="answers">{props.content}</p>
     <button>click</button>
-    </div>)
+    </div>))
 }
 
 // Question.propTypes = {

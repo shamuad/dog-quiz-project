@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Question from './Question';
+import { connect } from 'react-redux'
 
 class QuestionContainer extends Component {
-  status = {
-  }
 
   render() {
     return (
@@ -16,11 +15,10 @@ class QuestionContainer extends Component {
     )}
 }
 
-// const mapStateToProps = state => {
-//   return 
-//   }
-// }
 
-export default QuestionContainer
+const mapStateToProps = (state) => { 
+  return  {state}
+}
 
-//   connect(mapStateToProps)
+
+export default connect(mapStateToProps)(QuestionContainer)
