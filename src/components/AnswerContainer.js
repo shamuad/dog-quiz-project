@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Answer from './Answer';
 
-class AnswerContainer extends Component {
-  status = {
-  }
 
+class AnswerContainer extends Component {
+  incrementCounter = () => {
+    this.props.buttonIncrement()
+  }
+  
   render() {
     return (
       <div className="Answer">
@@ -16,11 +18,7 @@ class AnswerContainer extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return 
-//   }
-// }
+
 
 export default AnswerContainer
 
-//   connect(mapStateToProps)
