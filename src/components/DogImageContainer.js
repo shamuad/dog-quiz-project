@@ -46,7 +46,7 @@ export default class DogsImagesContainer extends Component {
         this.setState({
             images: images
         })
-        console.log(images)
+        // console.log(images)
     }
 
     render() {
