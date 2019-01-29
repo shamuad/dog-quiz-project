@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import buttoncounter from './buttonreducer'
+import buttonreducer from './buttonreducer'
 
 export default combineReducers({
-    buttoncounter
+    numClicked: buttonreducer
 })

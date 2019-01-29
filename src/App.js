@@ -5,15 +5,17 @@ import QuestionContainer from './components/QuestionContainer';
 import AnswerContainer from './components/AnswerContainer';
 import { buttonIncrement } from './actions/buttoncounter'
 
+
+
 class App extends Component {
 
-
   render() {
+    console.log(this.props.numClicked)
     return (
       <div className="App">
         <header className="App-header">
         <QuestionContainer />
-        <AnswerContainer buttonIncrement={buttonIncrement}/>
+        <AnswerContainer/>
         </header>
       </div>
     );
@@ -21,9 +23,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+ 
   return {
-    buttoncounter: state.buttoncounter,
-  
+    numClicked: state.numClicked,
   }
 }
 

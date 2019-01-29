@@ -1,9 +1,7 @@
-export default (state = [], { type }) => {
+export default (state = 0, { type }) => {
     switch (type) {
         case 'INCREMENT':
-        console.log(state)
-            return [...state + 1]
-    
+            return state + 1
         default:
             return state
     }
