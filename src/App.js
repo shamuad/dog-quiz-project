@@ -3,8 +3,7 @@ import './App.css';
 import QuestionContainer from './components/QuestionContainer';
 import AnswerContainer from './components/AnswerContainer';
 import { connect } from 'react-redux'
-
-
+import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
   
@@ -15,8 +14,7 @@ class App extends Component {
         <header className="App-header">
           <h1>Dog Quiz App</h1>
 
-
-          
+        <DogsImagesContainer />
         </header>
         <div className="Side">
           <div className="score">
