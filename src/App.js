@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import DogsImagesContainer from './components/DogsImagesContainer';
+import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
   render() {
