@@ -15,8 +15,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <QuestionContainer />
-        <AnswerContainer/>
           <h1>Dog Quiz App</h1>
 
         <DogsImagesContainer />

@@ -12,17 +12,16 @@ class AnswerContainer extends Component {
   render() {   
     return (
       <div className="Answer">
-        <Answer content={this.props.dogbreeds[0].breedname} test={this.incrementCounter}/>
-        <Answer content={this.props.dogbreeds[2].breedname} test={this.incrementCounter}/>
-        <Answer content={this.props.dogbreeds[3].breedname} test={this.incrementCounter}/>
+        <Answer content='{this.props.dogbreeds[0].breedname}' test={this.incrementCounter}/>
+        <Answer content='{this.props.dogbreeds[2].breedname}' test={this.incrementCounter}/>
+        <Answer content='{this.props.dogbreeds[3].breedname}' test={this.incrementCounter}/>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return { numClicked: state.numClicked}
-  state
+  return { numClicked: state.numClicked }
  }
 
 
