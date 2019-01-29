@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux'
 import QuestionContainer from './components/QuestionContainer';
 import AnswerContainer from './components/AnswerContainer';
-import { connect } from 'react-redux'
+import { buttonIncrement } from './actions/buttoncounter'
 import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
   
   
+
   render() {
+    console.log(this.props.numClicked)
     return (
       <div className="App">
         <header className="App-header">
+        <QuestionContainer />
+        <AnswerContainer/>
           <h1>Dog Quiz App</h1>
 
         <DogsImagesContainer />
@@ -61,7 +66,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return state
+ 
+  return {
+    numClicked: state.numClicked,
+    state
+  }
 }
 
-export default connect(mapStateToProps,{AnswerContainer,QuestionContainer})(App)
+export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)

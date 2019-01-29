@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import Answer from './Answer';
 import { connect } from 'react-redux'
+import { buttonIncrement } from '../actions/buttoncounter'
 
 class AnswerContainer extends Component {
-  status = {
-  }
 
-  render() {
-   
+  incrementCounter = () => {
+    this.props.buttonIncrement()
+  }
+  
+  render() {   
     return (
       <div className="Answer">
-        <Answer content={this.props.dogbreeds[0].breedname} />
-        <Answer content={this.props.dogbreeds[2].breedname} />
-        <Answer content={this.props.dogbreeds[3].breedname} />
+        <Answer content={this.props.dogbreeds[0].breedname} test={this.incrementCounter}/>
+        <Answer content={this.props.dogbreeds[2].breedname} test={this.incrementCounter}/>
+        <Answer content={this.props.dogbreeds[3].breedname} test={this.incrementCounter}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  return { numClicked: state.numClicked}
+  state
+ }
 
-  return state
-  }
 
-
-export default connect(mapStateToProps)(AnswerContainer)
-
-//   connect(mapStateToProps)
+export default connect (mapStateToProps, { buttonIncrement }) (AnswerContainer)

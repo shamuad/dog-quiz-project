@@ -1,3 +1,6 @@
+import { combineReducers } from 'redux'
+import buttonreducer from './buttonreducer'
+
 const initialstate = {
     counter: 2,
     dogbreeds:[
@@ -36,5 +39,7 @@ const reducer = (state = initialstate, action = {}) => {
     }
 }
 
-export default reducer
 
+export default combineReducers({
+    numClicked: buttonreducer
+})

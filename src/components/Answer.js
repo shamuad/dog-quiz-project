@@ -1,17 +1,13 @@
 import React from 'react'
 
+
 function Answer(props) {
-
   
-  return (
-    (<div>
-    <p className="answers">{props.content}</p>
-    <button>click</button>
-    </div>))
-}
 
-// Question.propTypes = {
-//   content: React.PropTypes.string.isRequired
-// };
+  return (<div>
+    <h2 className="answer">{props.content}</h2>
+    <button onClick={props.test}>click</button>
+  </div>)
+}
 
 export default Answer
