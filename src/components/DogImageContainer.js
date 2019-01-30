@@ -1,59 +1,41 @@
 import React, { Component } from 'react'
 import * as request from 'superagent'
-import DogBreedImages from './DogBreedImage'
+import { SetDogBreed } from '../actions/setDogBreed'
+import { connect } from 'react-redux'
 
-export default class DogsImagesContainer extends Component {
 
+class DogsImagesContainer extends Component {
     state = {
-        dogBreeds: null,
-        images:null
+        dogBreeds: []
     }
-
     componentDidMount() {
 
         request
             .get('https://dog.ceo/api/breeds/list/all')
             .then(response => {
                 const breeds = Object.keys(response.body.message)
-                this.updateBreeds(breeds)
-                // console.log(this.state.dogBreeds)
-                this.state.dogBreeds.map(breed => {
-                    request.get(`https://dog.ceo/api/breed/${breed}/images`)
-                    .then(response => {
-                        const images = this.updateImages(response.body.message)
-                        return images
-        
-                    })
+                breeds.map(breed => {
+                    return request.get(`https://dog.ceo/api/breed/${breed}/images`)
+                        .then(response => {
+                            this.props.SetDogBreed(breed, response.body.message[0])
+                        })
+
                 })
-                // const dogBreed = this.randomBreedImages(this.state.dogBreeds)
-                // console.log(dogBreed)
-                
+
+
             })
-            .catch(console.error)
-    }
+            .catch("error")
 
-    updateBreeds = (breeds) => {
-        this.setState({
-            dogBreeds: breeds
-        })
-    }
 
-    randomBreedImages = (breed) => {
-        return breed[Math.floor(Math.random() * breed.length)]
     }
-
-    updateImages = (images) => {
-        this.setState({
-            images: images
-        })
-        // console.log(images)
-    }
-
     render() {
-        return (
-            <div>
-                {/* {this.state.dogBreeds} */}
-            </div>
+        return (<div > { /* {this.state.dogBreeds} */} </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        state
+    }
+}
+export default connect(mapStateToProps, { SetDogBreed })(DogsImagesContainer)

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import QuestionContainer from './components/QuestionContainer';
 import AnswerContainer from './components/AnswerContainer';
 import { buttonIncrement } from './actions/buttoncounter'
+import { SetDogBreed } from './actions/setDogBreed'
 import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
@@ -11,7 +12,6 @@ class App extends Component {
   
 
   render() {
-    console.log(this.props.numClicked)
     return (
       <div className="App">
         <header className="App-header">
@@ -67,11 +67,11 @@ const mapStateToProps = state => {
  
   return {
     numClicked: state.numClicked,
-    state
+    breeds: state.breeds
   }
 }
 
-export default connect(mapStateToProps,{ buttonIncrement })(App)
+export default connect(mapStateToProps,{ buttonIncrement, SetDogBreed })(App)
 
 
 // export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
