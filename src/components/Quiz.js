@@ -14,7 +14,7 @@ function Quiz(props) {
 
         <div>
             <h3 className="answer">Answer: {props.content}</h3>
-            <button onClick={props.test}>click</button>
+            <button value={props.content} onClick={props.test}>click</button>
         </div>
     </div>)
 }

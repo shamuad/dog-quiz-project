@@ -17,6 +17,6 @@ import breedimage from './breedimage'
 
 
 export default combineReducers({
-    numClicked: buttonreducer,
+    totalAnswers: buttonreducer,
     breeds: breedimage
 })
