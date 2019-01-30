@@ -71,4 +71,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
+export default connect(mapStateToProps,{ buttonIncrement })(App)
+
+
+// export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
