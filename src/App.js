@@ -40,7 +40,6 @@ class App extends Component {
             <div className="question-container">
               
               <div className="questionImage">
-                <img className="dogImage" src="https://i.ytimg.com/vi/opKg3fyqWt4/hqdefault.jpg" alt="logo" />
               </div>
 
               <div className="asnwer">
