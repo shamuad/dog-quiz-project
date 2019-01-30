@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Quiz from './Quiz';
 import { connect } from 'react-redux'
 import { buttonIncrement } from '../actions/buttoncounter'
+import { buttonIncorrect } from '../actions/buttonIncorrect'
 
 
 
@@ -19,9 +20,9 @@ class QuizContainer extends Component {
 
         console.log(event.target.value)
         if (event.target.value === correctAnswer) {
-            return this.props.buttonIncrement()
+            return this.props.buttonIncrement(), this.props.buttonIncorrect()
         }
-       else return console.log('HELLO')
+       else return this.props.buttonIncorrect()
     }
 
 
@@ -53,13 +54,14 @@ render() {
 const mapStateToProps = (state) => {
     return {
         totalAnswers: state.totalAnswers,
+        correctAnswers: state.correctAnswers,
         breeds: state.breeds,
         state
     }
 }
 
 
-export default connect(mapStateToProps, { buttonIncrement })(QuizContainer)
+export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect })(QuizContainer)
 
 
 
