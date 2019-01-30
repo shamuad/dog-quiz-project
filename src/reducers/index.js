@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import buttonreducer from './buttonreducer'
+import breedimage from './breedimage'
   
 
 
@@ -17,4 +18,5 @@ import buttonreducer from './buttonreducer'
 
 export default combineReducers({
     numClicked: buttonreducer,
+    breeds: breedimage
 })
