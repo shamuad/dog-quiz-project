@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import QuestionContainer from './components/QuestionContainer';
-import AnswerContainer from './components/AnswerContainer';
+// import QuestionContainer from './components/QuestionContainer';
+import QuizContainer from './components/QuizContainer';
+// import AnswerContainer from './components/AnswerContainer';
 import { buttonIncrement } from './actions/buttoncounter'
 import { SetDogBreed } from './actions/setDogBreed'
 import DogsImagesContainer from './components/DogImageContainer';
@@ -36,16 +37,15 @@ class App extends Component {
                 <button>Continue</button>
               </div>
             </div>
-
             <div className="question-container">
-              <QuestionContainer />
+              
               <div className="questionImage">
                 <img className="dogImage" src="https://i.ytimg.com/vi/opKg3fyqWt4/hqdefault.jpg" alt="logo" />
               </div>
 
               <div className="asnwer">
                 <div className="answers">
-                <AnswerContainer />
+                <QuizContainer />
                 </div>
               </div>
             </div>
