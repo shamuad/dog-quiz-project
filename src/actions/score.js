@@ -5,7 +5,6 @@ export const buttonIncorrect = () => {
 }
 
 export const buttonIncrement = () => {
-    console.log('HAI!');
     
     return {
         type: 'CORRECT'

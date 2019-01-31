@@ -3,6 +3,7 @@ import Quiz from './Quiz';
 import { connect } from 'react-redux'
 import { buttonIncrement, buttonIncorrect } from '../actions/score'
 
+
 var shuffle = require('shuffle-array')
 // let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
@@ -10,12 +11,15 @@ class QuizContainer extends Component {
 
     state = { correctAnswerIndex: shuffle.pick([1, 2, 3]) }
 
-    incrementCounter = (event) => {
-        const correctAnswer = this.props.breeds[this.state.correctAnswerIndex].breed
-        if (event.target.value === correctAnswer) {
-            return this.props.buttonIncrement(), this.nextQuestion()
+    scoreCounter = (event) => {
+        const { currentQuestion } = this.props
+        if (event.target.value === currentQuestion.correctAnswer.breed) {
+            return this.props.buttonIncrement()
+ 
+        } else {
+            return this.props.buttonIncorrect()
+ 
         }
-        else return this.props.buttonIncorrect(), this.nextQuestion()
     }
 
 
@@ -44,7 +48,7 @@ class QuizContainer extends Component {
 
             <h1>What breed is this?</h1>
 
-            <Quiz currentQuestion={currentQuestion} score={score} test={this.props.buttonIncrement} />
+            <Quiz currentQuestion={currentQuestion} score={score} test={this.scoreCounter} />
         </div>)
 
     }
