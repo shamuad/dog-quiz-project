@@ -16,19 +16,19 @@ class QuizContainer extends Component {
         const { currentQuestion } = this.props
         console.log( currentQuestion )
         if (event.target.value === currentQuestion.correctAnswer.breed) {
-            return this.props.buttonIncrement()
+            return this.props.buttonIncrement(), this.nextQuestion()
  
         } else {
-            return this.props.buttonIncorrect()
+            return this.props.buttonIncorrect(), this.nextQuestion()
  
         }
     }
 
     nextQuestion = () => {
-        const { currentQuestion, breeds } = this.props
+        const { SetCurrentQuestion, breeds } = this.props
         let shuffledBreeds = shuffle.pick(breeds, { 'picks': 3 })
-        // console.log(shuffledBreeds)
-        return SetCurrentQuestion(shuffledBreeds)
+        shuffledBreeds.map(breed => {
+        return this.props.SetCurrentQuestion(breed.breed, breed.image)})
     }
 
 
@@ -45,7 +45,7 @@ class QuizContainer extends Component {
     render() {
         const { currentQuestion, score } = this.props
         if (this.props.breeds.length < 87) return 'Loading...'
-        console.log(this.nextQuestion())
+        // console.log(this.nextQuestion())
         return (<div>
 
             <div className='score'>Score: {this.displayScore()}%</div>
@@ -54,7 +54,7 @@ class QuizContainer extends Component {
 
             <h1>What breed is this?</h1>
 
-            <Quiz currentQuestion={currentQuestion} score={score} test={this.scoreCounter} />
+            <Quiz currentQuestion={currentQuestion} score={score} test={this.scoreCounter} nextQuestion={this.nextQuestion} />
         </div>)
 
     }
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect })(QuizContainer)
+export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect, SetCurrentQuestion })(QuizContainer)
 
 
 

@@ -1,7 +1,9 @@
+import {SET_QUESTION} from '../actions/currentQuestion'
+
 export default (state = initialState, action) => {
     switch (action.type) {
-        case '':
-            return state
+        case SET_QUESTION:
+            return {...state}
         default:
             return state
     }
