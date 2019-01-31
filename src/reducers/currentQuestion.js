@@ -3,7 +3,7 @@ import {SET_QUESTION} from '../actions/currentQuestion'
 export default (state = initialState, action) => {
     switch (action.type) {
         case SET_QUESTION:
-            return {...state, correctAnswer: {...action.payload}, incorrectAnswers: [{breed:action.payload.breed}, {breed:action.payload.breed}]}
+            return {...state}
         default:
             return state
     }
@@ -15,3 +15,4 @@ const initialState = {
 }
 
 // correctAnswer: {breed: '', image: ''}, incorrectAnswers:[]
+// correctAnswer: {...action.payload}, incorrectAnswers: [{breed:action.payload.breed}, {breed:action.payload.breed}]
