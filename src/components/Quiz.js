@@ -4,13 +4,13 @@ import React from 'react'
 function Quiz(props) {
 
     const { dogBreed } = props
+    // console.log(props.question)
 
-    // console.log(props)
+    // console.log(props.test)
     return (<div>
 
         {/* {!dogBreed && 'Loading...'}
         {dogBreed && dogBreed.map(url => <img key={url} src={url} alt="Dog" />)} */}
-
 
         <div>
             <h3 className="answer">Answer: {props.content}</h3>
