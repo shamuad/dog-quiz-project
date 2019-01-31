@@ -13,6 +13,13 @@ console.log(shuffler)
 
 
 class QuizContainer extends Component {
+
+    sendCurrentBreedToState = () => {
+        const currentBreed =  shuffle.pick([this.props.breeds], { 'picks': 3 })
+        
+       
+    }
+
     state = {correctAnswerIndex: shuffle.pick([1, 2, 3])}
 
     incrementCounter = (event) => {
@@ -33,11 +40,8 @@ class QuizContainer extends Component {
         return currentScore
     }
 
-    // nextQuestion = () => {
-    //     if (this.props.totalAnswers === this.props.totalAnswers) {
-    //         return shuffle.pick([1, 2, 3], { 'picks': 3 })
-    //     }
-    // }
+    
+
 
     nextQuestion = () => {
        this.setState({correctAnswerIndex: shuffle.pick([1, 2, 3])})
@@ -45,8 +49,9 @@ class QuizContainer extends Component {
 
 
     render() {
+      
         const currentScore = Math.floor(((this.props.correctAnswers * 100) / this.props.totalAnswers))
-        console.log(this.state)
+        // console.log(this.state)
         
         
         if (this.props.breeds.length < 87) return 'Loading...'

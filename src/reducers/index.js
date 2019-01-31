@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import buttonreducer from './buttonreducer'
+import score from './score'
 import breedimage from './breedimage'
-import buttonIncorrect from './buttonIncorrect';
+
   
 
 
@@ -18,7 +18,6 @@ import buttonIncorrect from './buttonIncorrect';
 
 
 export default combineReducers({
-    totalAnswers: buttonIncorrect,
-    correctAnswers: buttonreducer,
+    score,
     breeds: breedimage
 })
