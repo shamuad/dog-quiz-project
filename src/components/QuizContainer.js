@@ -9,10 +9,16 @@ import { buttonIncorrect } from '../actions/buttonIncorrect'
 var shuffle = require('shuffle-array')
 let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
-console.log(shuffler)
 
 
 class QuizContainer extends Component {
+
+    sendCurrentBreedToState = () => {
+        const currentBreed =  shuffle.pick([this.props.breeds], { 'picks': 3 })
+
+       
+    }
+
     state = {correctAnswerIndex: shuffle.pick([1, 2, 3])}
 
     incrementCounter = (event) => {
@@ -20,24 +26,24 @@ class QuizContainer extends Component {
 
         console.log(event.target.value, correctAnswer)
         if (event.target.value === correctAnswer) {
-            return this.props.buttonIncrement(), this.props.buttonIncorrect(), this.nextQuestion()
+            return this.props.buttonIncrement(), this.nextQuestion()
         }
         else return this.props.buttonIncorrect(), this.nextQuestion()
     }
 
 
-    displayScore = (currentScore) => {
+    displayScore = () => {
+        const { correct, incorrect } = this.props.score;
+        const currentScore = Math.floor((correct * 100) / (correct + incorrect))
+        console.log(this.props)
         if (isNaN(currentScore)) {
             return 0
         }
         return currentScore
     }
 
-    // nextQuestion = () => {
-    //     if (this.props.totalAnswers === this.props.totalAnswers) {
-    //         return shuffle.pick([1, 2, 3], { 'picks': 3 })
-    //     }
-    // }
+    
+
 
     nextQuestion = () => {
        this.setState({correctAnswerIndex: shuffle.pick([1, 2, 3])})
@@ -45,15 +51,15 @@ class QuizContainer extends Component {
 
 
     render() {
-        const currentScore = Math.floor(((this.props.correctAnswers * 100) / this.props.totalAnswers))
-        console.log(this.state)
+      
+        
         
         
         if (this.props.breeds.length < 87) return 'Loading...'
         
         return (<div>
 
-            <div className='score'>Score: {this.displayScore(currentScore)}%</div>
+            <div className='score'>Score: {this.displayScore()}%</div>
 
             <img className="dogImage" value={this.props.breeds[this.state.correctAnswerIndex].breed} src={this.props.breeds[this.state.correctAnswerIndex].image} alt="Dog" className="Image"></img>
 
@@ -72,10 +78,8 @@ class QuizContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        totalAnswers: state.totalAnswers,
-        correctAnswers: state.correctAnswers,
+        score: state.score,
         breeds: state.breeds,
-        state
     }
 }
 
