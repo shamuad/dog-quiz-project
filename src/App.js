@@ -1,19 +1,74 @@
 import React, { Component } from 'react';
 import './App.css';
-import QuestionContainer from './components/QuestionContainer';
-import AnswerContainer from './components/AnswerContainer';
+import { connect } from 'react-redux'
+// import QuestionContainer from './components/QuestionContainer';
+import QuizContainer from './components/QuizContainer';
+// import AnswerContainer from './components/AnswerContainer';
+import { buttonIncrement } from './actions/buttoncounter'
+import { SetDogBreed } from './actions/setDogBreed'
+import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
+  
+  
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-        <QuestionContainer />
-        <AnswerContainer />
+          <h1>Dog Quiz App</h1>
+
+        <DogsImagesContainer />
         </header>
+        <div className="Side">
+          <div className="score">
+          </div>
+
+
+        </div>
+        <main>
+          <div className="quiz">
+
+            <div className="start-container">
+              <div className="start-content">
+                <h1>Welcome to our page</h1>
+                <button>Continue</button>
+              </div>
+            </div>
+            <div className="question-container">
+              
+              <div className="questionImage">
+              </div>
+
+              <div className="asnwer">
+                <div className="answers">
+                <QuizContainer />
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </main>
+        <footer>
+          <p>Created with love</p>
+        </footer>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+ 
+  return {
+    numClicked: state.numClicked,
+    breeds: state.breeds
+  }
+}
+
+export default connect(mapStateToProps,{ buttonIncrement, SetDogBreed })(App)
+
+
+// export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
