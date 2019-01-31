@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+var shuffle = require('shuffle-array')
+
 class Quiz extends Component {
 
     renderAnswers(breed) {
@@ -13,34 +15,15 @@ class Quiz extends Component {
     render() {
         const { currentQuestion, test } = this.props
 
-        if(!currentQuestion) return 'Loading'
+        if (!currentQuestion) return 'Loading'
 
         const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
-        // const shuffledAnswers = shuffle(answers)
-
+        let shuffledAnswers = shuffle.pick(answers, { 'picks': 3 })
+        
         return (<div>
-            
-            {/* <ul>
-                <li key={currentQuestion.correctAnswer.breed}>
-                <button value={currentQuestion.correctAnswer.breed} onClick={test}>click</button>
-                {currentQuestion.correctAnswer.breed}</li></ul>
-
-            {
-                currentQuestion.incorrectAnswers &&
-                <ul>{currentQuestion.incorrectAnswers.map(this.renderAnswers)} </ul>
-            } */}
-            {answers.map()}
-
+            <ul>{shuffledAnswers.map(answer => this.renderAnswers(answer))}</ul>
         </div>)
     }
 }
 
-
 export default Quiz
-
-
-
-{/* <div>
-            <h3 className="answer">Answer: {props.content}</h3>
-            <button value={this.props.content} onClick={this.props.test}>click</button>
-        </div> */}
