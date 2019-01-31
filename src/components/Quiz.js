@@ -1,23 +1,46 @@
-import React from 'react'
+import React, { Component } from 'react';
 
+class Quiz extends Component {
 
-function Quiz(props) {
+    renderAnswers(breed) {
+        const { test } = this.props
+        return <li>
+            <button value={breed.breed} onClick={test}>click</button>
+            {breed.breed}
+        </li>
+    }
 
-    const { dogBreed } = props
-    // console.log(props.question)
+    render() {
+        const { currentQuestion, test } = this.props
 
-    // console.log(props.test)
-    return (<div>
+        if(!currentQuestion) return 'Loading'
 
-        {/* {!dogBreed && 'Loading...'}
-        {dogBreed && dogBreed.map(url => <img key={url} src={url} alt="Dog" />)} */}
+        const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
+        const shuffledAnswers = shuffle(answers)
 
-        <div>
-            <h3 className="answer">Answer: {props.content}</h3>
-            <button value={props.content} onClick={props.test}>click</button>
-        </div>
-    </div>)
+        return (<div>
+            
+            {/* <ul>
+                <li key={currentQuestion.correctAnswer.breed}>
+                <button value={currentQuestion.correctAnswer.breed} onClick={test}>click</button>
+                {currentQuestion.correctAnswer.breed}</li></ul>
+
+            {
+                currentQuestion.incorrectAnswers &&
+                <ul>{currentQuestion.incorrectAnswers.map(this.renderAnswers)} </ul>
+            } */}
+            {answers.map()}
+
+        </div>)
+    }
 }
 
 
 export default Quiz
+
+
+
+{/* <div>
+            <h3 className="answer">Answer: {props.content}</h3>
+            <button value={this.props.content} onClick={this.props.test}>click</button>
+        </div> */}

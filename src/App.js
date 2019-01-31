@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-// import QuestionContainer from './components/QuestionContainer';
 import QuizContainer from './components/QuizContainer';
-// import AnswerContainer from './components/AnswerContainer';
-import { buttonIncrement } from './actions/buttoncounter'
 import { SetDogBreed } from './actions/setDogBreed'
 import DogsImagesContainer from './components/DogImageContainer';
 
@@ -68,7 +65,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{ buttonIncrement, SetDogBreed })(App)
-
-
-// export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
+export default connect(mapStateToProps, { SetDogBreed })(App)
