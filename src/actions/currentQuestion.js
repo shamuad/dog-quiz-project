@@ -13,6 +13,7 @@ export function SetCurrentQuestion(breed, image) {
 }
 
 
+
 // export const SetCurrentQuestion = () => {
 //     return {
 //         type: 'SET_QUESTION'
