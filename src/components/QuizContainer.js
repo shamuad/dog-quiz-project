@@ -9,14 +9,16 @@ import { buttonIncorrect } from '../actions/buttonIncorrect'
 var shuffle = require('shuffle-array')
 let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
+console.log(shuffler)
+
 
 class QuizContainer extends Component {
-
+    state = {correctAnswerIndex: shuffle.pick([1, 2, 3])}
 
     incrementCounter = (event) => {
-        const correctAnswer = this.props.breeds[shuffler[2]].breed
+        const correctAnswer = this.props.breeds[this.state.correctAnswerIndex].breed
 
-        console.log(event.target.value)
+        console.log(event.target.value, correctAnswer)
         if (event.target.value === correctAnswer) {
             return this.props.buttonIncrement(), this.props.buttonIncorrect(), this.nextQuestion()
         }
@@ -38,14 +40,14 @@ class QuizContainer extends Component {
     // }
 
     nextQuestion = () => {
-        return shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
+       this.setState({correctAnswerIndex: shuffle.pick([1, 2, 3])})
     }
 
 
     render() {
         const currentScore = Math.floor(((this.props.correctAnswers * 100) / this.props.totalAnswers))
-        // console.log(shuffler)
-        // console.log(this.nextQuestion())
+        console.log(this.state)
+        
         
         if (this.props.breeds.length < 87) return 'Loading...'
         
@@ -53,7 +55,7 @@ class QuizContainer extends Component {
 
             <div className='score'>Score: {this.displayScore(currentScore)}%</div>
 
-            <img className="dogImage" value={this.props.breeds[shuffler[2]].breed} src={this.props.breeds[shuffler[2]].image} alt="Dog" className="Image"></img>
+            <img className="dogImage" value={this.props.breeds[this.state.correctAnswerIndex].breed} src={this.props.breeds[this.state.correctAnswerIndex].image} alt="Dog" className="Image"></img>
 
             <h1>What breed is this?</h1>
 
