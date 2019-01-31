@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import buttonreducer from './buttonreducer'
 import breedimage from './breedimage'
+import buttonIncorrect from './buttonIncorrect';
   
 
 
@@ -17,6 +18,7 @@ import breedimage from './breedimage'
 
 
 export default combineReducers({
-    numClicked: buttonreducer,
+    totalAnswers: buttonIncorrect,
+    correctAnswers: buttonreducer,
     breeds: breedimage
 })

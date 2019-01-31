@@ -1,5 +1,5 @@
 export const buttonIncrement = () => {
     return {
-        type: 'INCREMENT'
+        type: 'CORRECT'
     }
 }

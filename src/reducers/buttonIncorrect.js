@@ -1,6 +1,6 @@
 export default (state = 0, { type }) => {
     switch (type) {
-        case 'CORRECT':
+        case 'INCORRECT':
             return state + 1
         default:
             return state
