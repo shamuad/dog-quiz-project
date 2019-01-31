@@ -9,7 +9,6 @@ import { buttonIncorrect } from '../actions/buttonIncorrect'
 var shuffle = require('shuffle-array')
 let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
-console.log(shuffler)
 
 
 class QuizContainer extends Component {
@@ -54,7 +53,6 @@ class QuizContainer extends Component {
     render() {
       
         
-        // console.log(this.state)
         
         
         if (this.props.breeds.length < 87) return 'Loading...'
@@ -82,7 +80,6 @@ const mapStateToProps = (state) => {
     return {
         score: state.score,
         breeds: state.breeds,
-        state
     }
 }
 
