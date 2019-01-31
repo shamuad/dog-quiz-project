@@ -22,8 +22,6 @@ class App extends Component {
         </header>
         <div className="Side">
           <div className="score">
-            <p>Score:</p>
-            <p>50%</p>
           </div>
 
 

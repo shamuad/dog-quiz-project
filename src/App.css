@@ -45,6 +45,8 @@
   background-color: black;
   border-radius: 50%;
   text-align: center;
+  line-height: 75px; 
+  vertical-align: middle;
   color: white;
   position: absolute;
   top: 45%;
