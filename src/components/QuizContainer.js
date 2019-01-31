@@ -4,19 +4,11 @@ import { connect } from 'react-redux'
 import { buttonIncrement, buttonIncorrect } from '../actions/score'
 
 var shuffle = require('shuffle-array')
-let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
-
-
+// let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
 class QuizContainer extends Component {
 
-    sendCurrentBreedToState = () => {
-        const currentBreed =  shuffle.pick([this.props.breeds], { 'picks': 3 })
-
-       
-    }
-
-    state = {correctAnswerIndex: shuffle.pick([1, 2, 3])}
+    state = { correctAnswerIndex: shuffle.pick([1, 2, 3]) }
 
     incrementCounter = (event) => {
         const correctAnswer = this.props.breeds[this.state.correctAnswerIndex].breed
@@ -37,12 +29,12 @@ class QuizContainer extends Component {
     }
 
     nextQuestion = () => {
-       this.setState({correctAnswerIndex: shuffle.pick([1, 2, 3])})
+        this.setState({ correctAnswerIndex: shuffle.pick([1, 2, 3]) })
     }
 
 
-    render() { 
-        const { currentQuestion, score} = this.props
+    render() {
+        const { currentQuestion, score } = this.props
 
         return (<div>
 
@@ -52,7 +44,7 @@ class QuizContainer extends Component {
 
             <h1>What breed is this?</h1>
 
-            <Quiz currentQuestion={currentQuestion} score={score} test={this.props.buttonIncrement}/>
+            <Quiz currentQuestion={currentQuestion} score={score} test={this.props.buttonIncrement} />
         </div>)
 
     }
@@ -74,7 +66,6 @@ export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect })(Qu
 
 
 
- /* <Quiz value={currentQuestion.correctAnswer.breed} content={currentQuestion.correctAnswer.breed} test={this.incrementCounter} question={this.nextQuestion} />
-            <Quiz value={currentQuestion.incorrectAnswers[0].breed} content={currentQuestion.incorrectAnswers[0].breed} test={this.incrementCounter} question={this.nextQuestion}/>
-            <Quiz value={currentQuestion.incorrectAnswers[1].breed} content={currentQuestion.incorrectAnswers[1].breed} test={this.incrementCounter} question={this.nextQuestion}/> */
-            
+/* <Quiz value={currentQuestion.correctAnswer.breed} content={currentQuestion.correctAnswer.breed} test={this.incrementCounter} question={this.nextQuestion} />
+           <Quiz value={currentQuestion.incorrectAnswers[0].breed} content={currentQuestion.incorrectAnswers[0].breed} test={this.incrementCounter} question={this.nextQuestion}/>
+           <Quiz value={currentQuestion.incorrectAnswers[1].breed} content={currentQuestion.incorrectAnswers[1].breed} test={this.incrementCounter} question={this.nextQuestion}/> */

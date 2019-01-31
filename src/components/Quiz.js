@@ -16,7 +16,7 @@ class Quiz extends Component {
         if(!currentQuestion) return 'Loading'
 
         const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
-        const shuffledAnswers = shuffle(answers)
+        // const shuffledAnswers = shuffle(answers)
 
         return (<div>
             
