@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Quiz from './Quiz';
 import { connect } from 'react-redux'
 import { buttonIncrement, buttonIncorrect } from '../actions/score'
+import { SetCurrentQuestion } from '../actions/currentQuestion'
 
 
 var shuffle = require('shuffle-array')
@@ -13,6 +14,7 @@ class QuizContainer extends Component {
 
     scoreCounter = (event) => {
         const { currentQuestion } = this.props
+        console.log( currentQuestion )
         if (event.target.value === currentQuestion.correctAnswer.breed) {
             return this.props.buttonIncrement()
  
@@ -20,6 +22,13 @@ class QuizContainer extends Component {
             return this.props.buttonIncorrect()
  
         }
+    }
+
+    nextQuestion = () => {
+        const { currentQuestion, breeds } = this.props
+        let shuffledBreeds = shuffle.pick(breeds, { 'picks': 3 })
+        // console.log(shuffledBreeds)
+        return SetCurrentQuestion(shuffledBreeds)
     }
 
 
@@ -32,14 +41,11 @@ class QuizContainer extends Component {
         return currentScore
     }
 
-    nextQuestion = () => {
-        this.setState({ correctAnswerIndex: shuffle.pick([1, 2, 3]) })
-    }
-
 
     render() {
         const { currentQuestion, score } = this.props
-
+        if (this.props.breeds.length < 87) return 'Loading...'
+        console.log(this.nextQuestion())
         return (<div>
 
             <div className='score'>Score: {this.displayScore()}%</div>
