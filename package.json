@@ -6,6 +6,7 @@
     "classnames": "^2.2.6",
     "httpie": "^0.2.0",
     "react": "^16.7.0",
+    "react-delay-render": "^0.1.2",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.3",

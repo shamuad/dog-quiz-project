@@ -6,17 +6,16 @@ import { SetCurrentQuestion , SetIncorrectAnswers } from '../actions/currentQues
 
 // var classNames = require('classnames')
 var shuffle = require('shuffle-array')
-// let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
+
+console.log()
 
 class QuizContainer extends Component {
-
-    state = { correctAnswerIndex: shuffle.pick([1, 2, 3]) }
 
     scoreCounter = (event) => {
         const { currentQuestion } = this.props
         console.log( currentQuestion )
         if (event.target.value === currentQuestion.correctAnswer.breed) {
-            return this.props.buttonIncrement() && setTimeout (() => this.nextQuestion(), 2000) && console.log('Hello')
+            return this.props.buttonIncrement() && setTimeout (() => this.nextQuestion(), 2000)
 
         } else {
             return this.props.buttonIncorrect() && setTimeout (() => this.nextQuestion(), 2000)
@@ -48,8 +47,9 @@ class QuizContainer extends Component {
 
     nextQuestion = () => {
         const { SetCurrentQuestion, breeds } = this.props
-        let shuffledBreeds = shuffle.pick(breeds, { 'picks': 3 })
-        let correctAnswer = shuffledBreeds[0] 
+        const breeds2 = this.props.breeds.slice(1,4,8)
+        const shuffledBreeds = shuffle.pick(breeds2, { 'picks': 3 })
+        let correctAnswer = shuffledBreeds[0]
         // shuffledBreeds.splice(1,2).map(breed => {return this.props.SetIncorrectAnswers(breed.breed)})
         this.props.SetIncorrectAnswers(shuffledBreeds.splice(1,2))
         return this.props.SetCurrentQuestion(correctAnswer.breed, correctAnswer.image)}
