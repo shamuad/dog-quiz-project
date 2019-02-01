@@ -1,23 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react';
 
+var shuffle = require('shuffle-array')
 
-function Quiz(props) {
+class Quiz extends Component {
+    renderAnswers(breed) {
+        const { test } = this.props
+        return <p>
+            <button className={this.placeholder} value={breed.breed} onClick={test}>{breed.breed}</button>
+        </p>
+    }
 
-    const { dogBreed } = props
-    // console.log(props.question)
+    render() {
+        const { currentQuestion } = this.props
 
-    // console.log(props.test)
-    return (<div>
+        if (!currentQuestion) return 'Loading'
 
-        {/* {!dogBreed && 'Loading...'}
-        {dogBreed && dogBreed.map(url => <img key={url} src={url} alt="Dog" />)} */}
-
-        <div>
-            <h3 className="answer">Answer: {props.content}</h3>
-            <button value={props.content} onClick={props.test}>click</button>
-        </div>
+        const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
+        let shuffledAnswers = shuffle.pick(answers, { 'picks': 3 })
+        
+        const showAnswers = () => (<div className="img">
+        {shuffledAnswers.map(answer => this.renderAnswers(answer))}
     </div>)
-}
 
+        return showAnswers()
+    }
+}
 
 export default Quiz

@@ -1,57 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-// import QuestionContainer from './components/QuestionContainer';
 import QuizContainer from './components/QuizContainer';
-// import AnswerContainer from './components/AnswerContainer';
-import { buttonIncrement } from './actions/buttoncounter'
 import { SetDogBreed } from './actions/setDogBreed'
 import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
-  
-  
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Dog Quiz App</h1>
+          <h1 className="App-header">Welcome to Woofers</h1>
+          <DogsImagesContainer />
 
-        <DogsImagesContainer />
         </header>
-        <div className="Side">
-          <div className="score">
-          </div>
-
-
+        <div className="answers">
+          <QuizContainer />
         </div>
-        <main>
-          <div className="quiz">
 
-            <div className="start-container">
-              <div className="start-content">
-                <h1>Welcome to our page</h1>
-                <button>Continue</button>
-              </div>
-            </div>
-            <div className="question-container">
-              
-              <div className="questionImage">
-              </div>
-
-              <div className="asnwer">
-                <div className="answers">
-                <QuizContainer />
-                </div>
-              </div>
-            </div>
-
-
-
-
-          </div>
-        </main>
         <footer>
           <p>Created with love</p>
         </footer>
@@ -61,14 +27,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
- 
   return {
     numClicked: state.numClicked,
     breeds: state.breeds
   }
 }
 
-export default connect(mapStateToProps,{ buttonIncrement, SetDogBreed })(App)
-
-
-// export default connect(mapStateToProps,{ buttonIncrement, AnswerContainer, QuestionContainer })(App)
+export default connect(mapStateToProps, { SetDogBreed })(App)

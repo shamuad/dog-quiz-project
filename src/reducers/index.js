@@ -1,24 +1,10 @@
 import { combineReducers } from 'redux'
-import buttonreducer from './buttonreducer'
+import score from './score'
 import breedimage from './breedimage'
-import buttonIncorrect from './buttonIncorrect';
-  
-
-
-// const reducer = (state = initialstate, action = {}) => {
-//     switch (action.type) {
-//         // case SELECT:
-//         // console.log(SELECT)
-//         //   return [...state, action.payload]
-//         default:
-//             // console.log(state)
-//             return state
-//     }
-// }
-
+import currentQuestion from './currentQuestion'
 
 export default combineReducers({
-    totalAnswers: buttonIncorrect,
-    correctAnswers: buttonreducer,
-    breeds: breedimage
+    score,
+    breeds: breedimage,
+    currentQuestion
 })
