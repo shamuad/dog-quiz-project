@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { buttonIncrement, buttonIncorrect } from '../actions/score'
 import { SetCurrentQuestion , SetIncorrectAnswers } from '../actions/currentQuestion'
 
-var classNames = require('classnames')
+// var classNames = require('classnames')
 var shuffle = require('shuffle-array')
 // let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
@@ -35,14 +35,14 @@ class QuizContainer extends Component {
     //     })
     // }
 
-    showRightAnswer = (event) => {
-        const { currentQuestion } = this.props
-        if (event.target.value === currentQuestion.correctAnswer.breed) {
-            var placeholder = classNames (this.props.className, {
-                "Correct": (this.props.selected === this.props.className)
-            })
-        }
-    }
+    // showRightAnswer = (event) => {
+    //     const { currentQuestion } = this.props
+    //     if (event.target.value === currentQuestion.correctAnswer.breed) {
+    //         var placeholder = classNames (this.props.className, {
+    //             "Correct": (this.props.selected === this.props.className)
+    //         })
+    //     }
+    // }
 
 
 
