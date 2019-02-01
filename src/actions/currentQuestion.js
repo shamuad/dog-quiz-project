@@ -8,26 +8,19 @@ export function SetCurrentQuestion(breed, image) {
             image
         },
     }
-    
+
 }
 
 export const SET_INCORRECTANSWERS = 'SET_INCORRECTANSWERS'
 
 export function SetIncorrectAnswers(breed) {
+
     return {
         type: SET_INCORRECTANSWERS,
         payload: {
-            breed:breed
-          
+            breed: breed
+
         },
     }
-    
+
 }
-
-
-
-// export const SetCurrentQuestion = () => {
-//     return {
-//         type: 'SET_QUESTION'
-//     }
-// }

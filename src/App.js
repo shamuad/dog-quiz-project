@@ -6,15 +6,13 @@ import { SetDogBreed } from './actions/setDogBreed'
 import DogsImagesContainer from './components/DogImageContainer';
 
 class App extends Component {
-
-
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-header">Welcome to Woofers</h1>
           <DogsImagesContainer />
+
         </header>
         <div className="answers">
           <QuizContainer />
@@ -29,7 +27,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-
   return {
     numClicked: state.numClicked,
     breeds: state.breeds
