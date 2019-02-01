@@ -7,11 +7,11 @@ import { SetCurrentQuestion, SetIncorrectAnswers } from '../actions/currentQuest
 var shuffle = require('shuffle-array')
 
 class QuizContainer extends Component {
+
     scoreCounter = (event) => {
         const { currentQuestion } = this.props
-        console.log(currentQuestion)
         if (event.target.value === currentQuestion.correctAnswer.breed) {
-            return this.props.buttonIncrement() && setTimeout(() => this.nextQuestion(), 2000) && console.log('Hello')
+            return this.props.buttonIncrement() && setTimeout(() => this.nextQuestion(), 2000)
 
         } else {
             return this.props.buttonIncorrect() && setTimeout(() => this.nextQuestion(), 2000)
@@ -36,10 +36,24 @@ class QuizContainer extends Component {
         return currentScore
     }
 
-    render() {
-        const { currentQuestion, score } = this.props
 
-        if (this.props.breeds.length < 87) return 'Loading...'
+    // Could not figure out final logic
+    // displayStreak = () => {
+    //     const { correct, incorrect } = this.props.score;
+    //     let streak = 0
+    //     console.log(correct)
+    //     if (correct === +1) {
+    //         streak += 1 
+    //     } else {
+    //         streak = 0
+    //     }
+    //     return streak
+    // }
+
+        render() {
+            const { currentQuestion, score } = this.props
+
+            if (this.props.breeds.length < 87) return 'Loading...'
 
         return (<div>
             <div className='score'>Score: {this.displayScore()}%</div>
@@ -47,8 +61,7 @@ class QuizContainer extends Component {
             <h2 >What breed is this?</h2>
             <Quiz className="question" currentQuestion={currentQuestion} score={score} test={this.scoreCounter} nextQuestion={this.nextQuestion} />
         </div>)
-
-    }
+}
 }
 
 const mapStateToProps = (state) => {
@@ -60,3 +73,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect, SetCurrentQuestion, SetIncorrectAnswers })(QuizContainer)
+

@@ -22,14 +22,15 @@ export default (state = initialState, action = {}) => {
     }
 }
 
+
 const initialState = {
     correctAnswer: {
-        breed: "spaniel",
-        image: "https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1091.jpg"
+        breed: "Start",
+        image: "http://loftopia.com/wp-content/uploads/2013/09/cute-dog-funny-puppy-Favim.com-215827-300x300-300x300.jpg"
     },
     incorrectAnswers: [{
-        breed: "test"
+        breed: "Start"
     }, {
-        breed: "snoop"
+        breed: "Start"
     }]
 }
