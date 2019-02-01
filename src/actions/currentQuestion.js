@@ -14,7 +14,6 @@ export function SetCurrentQuestion(breed, image) {
 export const SET_INCORRECTANSWERS = 'SET_INCORRECTANSWERS'
 
 export function SetIncorrectAnswers(breed) {
-    console.log(breed)
     return {
         type: SET_INCORRECTANSWERS,
         payload: {

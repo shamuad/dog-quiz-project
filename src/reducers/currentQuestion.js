@@ -6,7 +6,6 @@ import {
 } from '../actions/currentQuestion'
 
 export default (state = initialState, action = {}) => {
-    console.log(state, action)
     switch (action.type) {
         case SET_QUESTION:
             return { ...state,
@@ -24,10 +23,6 @@ export default (state = initialState, action = {}) => {
             return state
     }
 }
-
-
-
-
 
 
 const initialState = {
