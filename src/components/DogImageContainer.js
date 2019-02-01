@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import * as request from 'superagent'
 import { SetDogBreed } from '../actions/setDogBreed'
 import { connect } from 'react-redux'
@@ -32,7 +33,7 @@ class DogsImagesContainer extends Component {
 
     }
     render() {
-        return (<div > { /* {this.state.dogBreeds} */} </div>
+        return (<div className="img" > { /* {this.state.dogBreeds} */} </div>
         )
     }
 }
