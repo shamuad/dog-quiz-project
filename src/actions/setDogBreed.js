@@ -8,5 +8,4 @@ export function SetDogBreed(breed, image) {
             image
         }
     }
-    
 }

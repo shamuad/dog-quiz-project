@@ -7,11 +7,9 @@ const reducer = (state = [], action = {}) => {
         ...state,
         action.payload
         ]
-       
         default:
             return state
     }
-    
 }
 
 export default reducer
