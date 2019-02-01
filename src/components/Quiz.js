@@ -20,7 +20,7 @@ class Quiz extends Component {
         const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
         let shuffledAnswers = shuffle.pick(answers, { 'picks': 3 })
         
-        return (<div>
+        return (<div className="img">
             <ul>{shuffledAnswers.map(answer => this.renderAnswers(answer))}</ul>
         </div>)
     }
