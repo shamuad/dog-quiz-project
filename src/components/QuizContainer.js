@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Quiz from './Quiz';
 import { connect } from 'react-redux'
 import { buttonIncrement, buttonIncorrect } from '../actions/score'
-import { SetCurrentQuestion } from '../actions/currentQuestion'
+import { SetCurrentQuestion , SetIncorrectAnswers } from '../actions/currentQuestion'
 
-
+var classNames = require('classnames')
 var shuffle = require('shuffle-array')
 // let shuffler = shuffle.pick([1, 2, 3], { 'picks': 3 })
 
@@ -16,20 +16,43 @@ class QuizContainer extends Component {
         const { currentQuestion } = this.props
         console.log( currentQuestion )
         if (event.target.value === currentQuestion.correctAnswer.breed) {
-            return this.props.buttonIncrement(), this.nextQuestion()
- 
+            return this.props.buttonIncrement() && setTimeout (() => this.nextQuestion(), 2000) && console.log('Hello')
+
         } else {
-            return this.props.buttonIncorrect(), this.nextQuestion()
+            return this.props.buttonIncorrect() && setTimeout (() => this.nextQuestion(), 2000)
  
         }
     }
 
+
+    // function() {
+    //     var classes = classNames(this.propsclassNames, {
+    //         'selected': (this.props.selected === this.props.className)
+
+    //     return (
+    //         <li 
+    //     )
+    //     })
+    // }
+
+    showRightAnswer = (event) => {
+        const { currentQuestion } = this.props
+        if (event.target.value === currentQuestion.correctAnswer.breed) {
+            var placeholder = classNames (this.props.className, {
+                "Correct": (this.props.selected === this.props.className)
+            })
+        }
+    }
+
+
+
     nextQuestion = () => {
         const { SetCurrentQuestion, breeds } = this.props
         let shuffledBreeds = shuffle.pick(breeds, { 'picks': 3 })
-        shuffledBreeds.map(breed => {
-        return this.props.SetCurrentQuestion(breed.breed, breed.image)})
-    }
+        let correctAnswer = shuffledBreeds[0] 
+        // shuffledBreeds.splice(1,2).map(breed => {return this.props.SetIncorrectAnswers(breed.breed)})
+        this.props.SetIncorrectAnswers(shuffledBreeds.splice(1,2))
+        return this.props.SetCurrentQuestion(correctAnswer.breed, correctAnswer.image)}
 
 
     displayScore = () => {
@@ -44,8 +67,9 @@ class QuizContainer extends Component {
 
     render() {
         const { currentQuestion, score } = this.props
+
         if (this.props.breeds.length < 87) return 'Loading...'
-        // console.log(this.nextQuestion())
+
         return (<div>
 
             <div className='score'>Score: {this.displayScore()}%</div>
@@ -71,7 +95,7 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect, SetCurrentQuestion })(QuizContainer)
+export default connect(mapStateToProps, { buttonIncrement, buttonIncorrect, SetCurrentQuestion, SetIncorrectAnswers })(QuizContainer)
 
 
 

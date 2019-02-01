@@ -6,10 +6,9 @@ class Quiz extends Component {
 
     renderAnswers(breed) {
         const { test } = this.props
-        return <li>
-            <button value={breed.breed} onClick={test}>click</button>
-            {breed.breed}
-        </li>
+        return <p>
+            <button className={this.placeholder}value={breed.breed} onClick={test}>{breed.breed}</button>
+        </p>
     }
 
     render() {
@@ -20,8 +19,9 @@ class Quiz extends Component {
         const answers = [currentQuestion.correctAnswer, ...currentQuestion.incorrectAnswers]
         let shuffledAnswers = shuffle.pick(answers, { 'picks': 3 })
         
+
         return (<div className="img">
-            <ul>{shuffledAnswers.map(answer => this.renderAnswers(answer))}</ul>
+            {shuffledAnswers.map(answer => this.renderAnswers(answer))}
         </div>)
     }
 }
