@@ -21,7 +21,8 @@ class QuizContainer extends Component {
 
     nextQuestion = () => {
         const { breeds } = this.props
-        let shuffledBreeds = shuffle.pick(breeds, { 'picks': 3 })
+        const round1 = this.props.breeds.slice(33, 36)
+        let shuffledBreeds = shuffle.pick(round1, { 'picks': 3 })
         let correctAnswer = shuffledBreeds[0]
         this.props.SetIncorrectAnswers(shuffledBreeds.splice(1, 2))
         return this.props.SetCurrentQuestion(correctAnswer.breed, correctAnswer.image)
